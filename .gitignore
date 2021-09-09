@@ -1,0 +1,8 @@
+# node_modules
+node_modules
+
+#carpetas no indispensables en este proyecto
+
+
+#archivos no necesarios en el proyecto
+*.jpg
