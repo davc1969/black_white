@@ -1,0 +1,10 @@
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" overflow="hidden">
+
+    <g clip-path="url(#clip0)">
+        
+        <path d="M100,0 a 100 100 0 0,0 0,200 z" fill="white" stroke="#000000" stroke-width="1"/>
+  
+        <path d="M100,200 A 100 100 0 0 0 100 0 z" fill="black" stroke="#000000" stroke-width="1"/>
+        <text fill="#A6A6A6" font-family="Arial Rounded MT Bold,Arial Rounded MT Bold_MSFontService,sans-serif" font-weight="700" font-size="160" transform="translate(44 150)">&amp;</text>
+    </g>
+</svg>

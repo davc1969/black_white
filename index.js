@@ -15,7 +15,7 @@ const path = require('path')
 
 
 const app = express()
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 
 //Importamos las rutas que están cargadas en el archivo de enrutamiento en la carpeta routes
 const routes = require('./routes/routes');
@@ -23,17 +23,10 @@ const exp = require('constants');
 
 // Vamos a fijar una ruta para archivos estáticos
 app.use(express.static(path.join(__dirname, 'public')));
-//app.use('/resources', express.static(path.join(__dirname, '/public')));
-
 
 
 // Ahora usamos la lista de enrutamiento ya definida
 app.use(routes);
-
-
-
-
-
 
 
 app.listen(PORT, () => {
