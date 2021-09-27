@@ -19,12 +19,11 @@ const router = express.Router();
 
 
 router.get('/', (req, res) => {
-    console.log('estamos en get /2: ', 'resources/index.html', __dirname);
-    res.writeHead(200, { 'Content-Type': 'text/html' })
+
+    //res.writeHead(200, { 'Content-Type': 'text/html' });
 
     res.sendFile('index.html');
 
-    //res.end();
 });
 
 router.get('/changed', (req, res) => {
@@ -40,8 +39,8 @@ router.get('/changed', (req, res) => {
             .then(() => {
                 const filePath = path.join(__dirname, '../public/image.html');
                 console.log(filePath);
-                // res.writeHead(200, { 'Content-Type': 'text/html' })
-                 res.sendFile(filePath);
+                //res.writeHead(200, { 'Content-Type': 'text/html' });
+                res.sendFile(filePath);
                 
                 // fs.readFile('newImg.jpg', (err, img) => {
                 //     console.log(__dirname);

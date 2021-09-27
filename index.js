@@ -1,34 +1,40 @@
-// importar librería de express para crear el servidor
-const express = require('express');
+// Importar librería YARGS para manejo de línea de comandos
+const yargs = require("yargs");
 
-// importar librería url para hacer el parse de la url en la cual se pasa la imagen
-const url = require('url');
+// Importar librería Child-Process apra ejecutar otro módulo
+const child = require("child_process");
 
-//importar librería fs para manejar los archivos, el que se lee desde la url y el que se envía a la nueva imagen
-const fs = require('fs');
+// Clave de verificación para ejecutar blackwhite.js
+const key = 123;
 
-//importar librería jimp para manejo de imágenes
-const jimp = require('jimp');
+const argv = yargs
+    .command(
+        "runbw",
+        "Comando para correr aplicación para cambio de color de fotografías",
+        {
+            key : {
+                describe: "clave de acceso",
+                demand: true,
+                alias: "k"
+            }
+        },
+        (args) => {
+            if (args.key == key) {
+                child.exec("node blackwhite.js", (err, stdout) => {
+                    if(err) {
+                        console.log(err.message)
+                    }
+                    else {
+                        console.log("Ejecutando blackwhite.js...");
+                        console.log(stdout);
+                    }
+                })
+            }
+            else {
+                console.log("Credenciales incorrectas, no se puede ejecutar el programa blackwhite.js");
+            }
+        }
+    )
+    .help().argv
 
-//importar librería path para manejar apropiadamente las llamadas a directorios
-const path = require('path')
 
-
-const app = express()
-const PORT = process.env.PORT || 4000;
-
-//Importamos las rutas que están cargadas en el archivo de enrutamiento en la carpeta routes
-const routes = require('./routes/routes');
-const exp = require('constants');
-
-// Vamos a fijar una ruta para archivos estáticos
-app.use(express.static(path.join(__dirname, 'public')));
-
-
-// Ahora usamos la lista de enrutamiento ya definida
-app.use(routes);
-
-
-app.listen(PORT, () => {
-    console.log(`Active server on port: ${PORT}`);
-});
